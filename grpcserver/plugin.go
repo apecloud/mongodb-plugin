@@ -55,7 +55,7 @@ func (p *DBPlugin) GetPluginInfo(ctx context.Context, in *plugin.GetPluginInfoRe
 	return resp, nil
 }
 
-func (p *DBPlugin) IsDBReady(ctx context.Context, in *plugin.IsEngineReadyRequest) (*plugin.IsEngineReadyResponse, error) {
+func (p *DBPlugin) IsEngineReady(ctx context.Context, in *plugin.IsEngineReadyRequest) (*plugin.IsEngineReadyResponse, error) {
 	isReady := p.dbManager.IsDBStartupReady()
 
 	resp := &plugin.IsEngineReadyResponse{

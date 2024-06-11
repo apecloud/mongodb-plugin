@@ -62,6 +62,7 @@ var config *Config
 
 func NewConfig(properties map[string]string) (*Config, error) {
 	config = &Config{
+		Hosts:            []string{"localhost:27017"},
 		Direct:           true,
 		Username:         "root",
 		OperationTimeout: defaultTimeout,
@@ -77,10 +78,6 @@ func NewConfig(properties map[string]string) (*Config, error) {
 
 	if val, ok := properties[host]; ok && val != "" {
 		config.Hosts = []string{val}
-	}
-
-	if len(config.Hosts) == 0 {
-		return nil, errors.New("must set 'host' in metadata or KB_SERVICE_PORT environment variable")
 	}
 
 	if val, ok := properties[username]; ok && val != "" {
